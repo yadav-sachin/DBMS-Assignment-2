@@ -1,6 +1,6 @@
-SELECT pdt_id, user_id
+SELECT name, pdt_id, user_id
 FROM (
-    SELECT pdt_id
+    SELECT name, pdt_id
     FROM products 
     WHERE name LIKE '%mi%'
 )P LEFT OUTER JOIN (

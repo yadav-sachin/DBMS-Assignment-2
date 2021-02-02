@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 align = "center"> <b>ASSIGNMENT 2 : CS432 </b></h2>
+<h1 align = "center">REPORT</h1>
+<h4 align = "center"> Sachin Yadav 18110148 </h4>
+<h1 id="directory-structure">Directory Structure</h1>
+<pre class="hljs"><code><div>./
+├── 01.sql      <span class="hljs-comment">#the query files for each question numbered from 01 to 21</span>
+├── 02.sql
+├── 03.sql
+├── 04.sql
+├── 05.sql
+├── 06.sql
+├── 07.sql
+├── 08.sql
+├── 09.sql
+├── 10.sql
+├── 11.sql
+├── 12.sql
+├── 13.sql
+├── 14.sql
+├── 15.sql
+├── 16.sql
+├── 17.sql
+├── 18.sql
+├── 19.sql
+├── 20.sql
+├── 21.sql
+├── database_schema.pdf <span class="hljs-comment"># the Database Schema as generated by Jetbrains DataGrip toop</span>
+├── filled-dbdump.sql   <span class="hljs-comment">#Database Instance with tables filled with dummy records</span>
+├── images  <span class="hljs-comment">#images of the output of queries and database schema</span>
+├── initial-dbdump.sql  <span class="hljs-comment">#Database Instance with empty tables</span>
+├── report.md       <span class="hljs-comment"># the report in MD format, same was converted to PDF form report.pdf</span>
+├── report.pdf      <span class="hljs-comment"># the PDF of the report</span>
+└── schema.sql     <span class="hljs-comment">#contains the definition of the tables in the database</span>
+</div></code></pre>
+<h1 id="instructions">Instructions</h1>
+<ul>
+<li>Run <code>source schema.sql</code> to initialize a database named 'x' and tables inside it of users, products, etc.</li>
+<li>Run ``source 01.sql``` to fill the tables with dummy records.</li>
+</ul>
+<h1 id="database-schema">Database Schema</h1>
+<p><img src="./images/database_schema.png" alt="Database Schema"></p>
+<p>[Generated using JetBrains DataGrip]</p>
+<ul>
+<li>The attributes with blue table sign in front of their name are UNIQUE.</li>
+<li>The Blue Key represents FOREIGN KEY and Gold Key as PRIMARY KEY.</li>
+</ul>
+<p><strong>For more detailed Database Schema refer to <code>schema.sql</code> file</strong></p>
+<h2 id="question-1">Question 1.</h2>
+<p><strong>Refer to file <code>01.sql</code></strong></p>
+<h2 id="question-2">Question 2.</h2>
+<p>Here I deleted a user with email 'niraj@gmail.com'.
+I have set  <code>ON DELETE CASCADE</code> for majority of Foreign Keys.
+In reviews relation, the user_id Foreign Key is allowed to be NULL.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">UPDATE</span> reviews
+<span class="hljs-keyword">SET</span> user_id = <span class="hljs-literal">NULL</span>, username = <span class="hljs-string">'Anonymous'</span>
+<span class="hljs-keyword">WHERE</span> user_id = (<span class="hljs-keyword">SELECT</span> user_id
+    <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+    <span class="hljs-keyword">WHERE</span> email = <span class="hljs-string">'niraj@gmail.com'</span>);
+
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+<span class="hljs-keyword">WHERE</span> email = <span class="hljs-string">'niraj@gmail.com'</span>;
+</div></code></pre>
+<p><img src="./images/02.png" alt="02-result"></p>
+<h2 id="question-3">Question 3.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">UPDATE</span> products
+<span class="hljs-keyword">SET</span> price = price * <span class="hljs-number">1.10</span>
+<span class="hljs-keyword">where</span> price &lt; <span class="hljs-number">5000</span> <span class="hljs-keyword">AND</span> pdt_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> pdt_id 
+    <span class="hljs-keyword">FROM</span> user_views
+    <span class="hljs-keyword">WHERE</span> created_at &gt;= <span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">CURDATE</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">3</span> <span class="hljs-keyword">MONTH</span>)
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pdt_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> user_id) &gt; <span class="hljs-number">10</span>
+);
+</div></code></pre>
+<p><img src="images/03.png" alt=""></p>
+<p>Here the prices of 5. Inferno, 6. Lolita, 9. David Copperfield, 14. Neomi Watch R2 and 24. Leeves Men Jeans have changed.</p>
+<h2 id="question-4">Question 4.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> addresses (user_id, street, city, province, pincode) <span class="hljs-keyword">VALUES</span> 
+(<span class="hljs-number">1</span>, <span class="hljs-string">'House 52, Mahavir Road, Rohini'</span>, <span class="hljs-string">'Delhi'</span>, <span class="hljs-string">'Delhi'</span>, <span class="hljs-number">110074</span>),
+(<span class="hljs-number">1</span>, <span class="hljs-string">'Google Office, Nixty Road, Pixis Industrial Complex'</span>, <span class="hljs-string">'Bangalore'</span>, <span class="hljs-string">'Karnataka'</span>, <span class="hljs-number">389252</span>),
+(<span class="hljs-number">1</span>, <span class="hljs-string">'Room 239, Hostel Chimair, IIT Gandhinagar'</span>, <span class="hljs-string">'Gandhinagar'</span>, <span class="hljs-string">'Gujarat'</span>, <span class="hljs-number">291045</span>);
+</div></code></pre>
+<p><img src="images/04.png" alt=""></p>
+<h2 id="question-5">Question 5.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> phone, email 
+<span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+<span class="hljs-keyword">where</span> city = <span class="hljs-string">'Madrid'</span> <span class="hljs-keyword">AND</span> user_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> user_id 
+    <span class="hljs-keyword">FROM</span> orders
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> user_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">SUM</span>(price) &gt;= <span class="hljs-number">10000</span>
+);
+</div></code></pre>
+<p><img src="images/05.png" alt=""></p>
+<h2 id="question-6">Question 6.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, pdt_id, user_id
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, pdt_id
+    <span class="hljs-keyword">FROM</span> products 
+    <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%mi%'</span>
+)P <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> user_id, pdt_id
+    <span class="hljs-keyword">FROM</span> order_items
+)O <span class="hljs-keyword">USING</span> (pdt_id);
+</div></code></pre>
+<p><img src="images/06.png" alt=""></p>
+<h2 id="question-7">Question 7.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> retailer_id, email
+<span class="hljs-keyword">FROM</span> retailers 
+<span class="hljs-keyword">WHERE</span> city = <span class="hljs-string">'Ahmedabad'</span>;
+</div></code></pre>
+<p><img src="images/07.png" alt=""></p>
+<h2 id="question-8">Question 8.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * 
+<span class="hljs-keyword">FROM</span> orders 
+<span class="hljs-keyword">WHERE</span> user_id = (
+    <span class="hljs-keyword">SELECT</span> user_id
+    <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+    <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> created_at <span class="hljs-keyword">DESC</span>
+    <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span>)
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> created_at <span class="hljs-keyword">DESC</span>
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">3</span>;
+</div></code></pre>
+<p><img src="images/08.png" alt=""></p>
+<h2 id="question-9">Question 9.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> F.user_id, <span class="hljs-keyword">name</span>, pdt_id, <span class="hljs-keyword">category</span>, price
+<span class="hljs-keyword">FROM</span> products <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> (
+    <span class="hljs-keyword">SELECT</span> cart_items.user_id, pdt_id
+    <span class="hljs-keyword">FROM</span> cart_items <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> (
+        <span class="hljs-keyword">SELECT</span> user_id
+        <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+        <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> created_at <span class="hljs-keyword">ASC</span>
+        <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">2</span>
+    ) U <span class="hljs-keyword">USING</span>(user_id)
+)F <span class="hljs-keyword">USING</span> (pdt_id);   
+</div></code></pre>
+<p><img src="images/09.png" alt=""></p>
+<h2 id="question-10">Question 10.</h2>
+<p><strong>Assumption</strong>: By 'after 2010', we mean book published in 2011 (excluding 2010) and coming years.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> novels
+<span class="hljs-keyword">WHERE</span> publication_date &gt;= <span class="hljs-string">'2011-01-01'</span>;
+</div></code></pre>
+<p><img src="images/10.png" alt=""></p>
+<h2 id="question-11">Question 11.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> pdt_id, e.electronic_id, p.name, price, brand, <span class="hljs-keyword">model</span>, description, date_of_manufacture
+<span class="hljs-keyword">FROM</span> electronics e <span class="hljs-keyword">JOIN</span> products p <span class="hljs-keyword">USING</span>(pdt_id)
+<span class="hljs-keyword">WHERE</span> price <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">10000</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">20000</span>;
+</div></code></pre>
+<p><img src="images/11.png" alt=""></p>
+<h2 id="question-12">Question 12.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> user_id, username, email
+<span class="hljs-keyword">FROM</span>    
+    (<span class="hljs-keyword">SELECT</span> user_id
+    <span class="hljs-keyword">FROM</span> order_items <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">USING</span> (pdt_id)
+    <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">category</span> = <span class="hljs-string">"electronics"</span>
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> user_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">SUM</span>(quantity) &gt; <span class="hljs-number">3</span>) A
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span>
+    (<span class="hljs-keyword">SELECT</span> user_id
+    <span class="hljs-keyword">FROM</span> order_items <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">USING</span> (pdt_id)
+    <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">category</span> = <span class="hljs-string">"novels"</span>
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> user_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">SUM</span>(quantity) &gt; <span class="hljs-number">3</span>) B
+<span class="hljs-keyword">USING</span> (user_id) <span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">users</span> <span class="hljs-keyword">USING</span> (user_id);
+</div></code></pre>
+<p><img src="images/12.png" alt=""></p>
+<h2 id="question-13">Question 13.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> pdt_id, electronic_id, <span class="hljs-keyword">name</span>, electronics.category, electronics.brand, electronics.model, price
+<span class="hljs-keyword">FROM</span> electronics <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">USING</span> (pdt_id)
+<span class="hljs-keyword">WHERE</span> electronics.pdt_id = products.pdt_id <span class="hljs-keyword">AND</span> electronics.category = <span class="hljs-string">"Laptop"</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> price <span class="hljs-keyword">ASC</span>;
+</div></code></pre>
+<p><img src="images/13.png" alt=""></p>
+<h2 id="question-14">Question 14.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> products 
+<span class="hljs-keyword">WHERE</span> created_at &gt;= <span class="hljs-string">'2011-11-12 00:00:00'</span>;
+</div></code></pre>
+<p><img src="images/14.png" alt=""></p>
+<h2 id="question-15">Question 15.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">name</span>, novels.*, price
+<span class="hljs-keyword">FROM</span> novels <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">using</span> (pdt_id)
+<span class="hljs-keyword">WHERE</span> author = <span class="hljs-string">"Dan Brown"</span>;
+</div></code></pre>
+<p><img src="images/15.png" alt=""></p>
+<h2 id="question-16">Question 16.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> user_id, username, email, phone
+<span class="hljs-keyword">FROM</span> <span class="hljs-keyword">users</span>
+<span class="hljs-keyword">WHERE</span> user_id <span class="hljs-keyword">in</span> (
+    <span class="hljs-keyword">SELECT</span> user_id
+    <span class="hljs-keyword">FROM</span> cart_items
+    <span class="hljs-keyword">WHERE</span> quantity &lt; <span class="hljs-number">5</span>
+);
+</div></code></pre>
+<p><img src="images/16.png" alt=""></p>
+<h2 id="question-17">Question 17.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> orders 
+<span class="hljs-keyword">WHERE</span> order_id = (
+    <span class="hljs-keyword">SELECT</span> order_id
+    <span class="hljs-keyword">FROM</span> order_items
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> order_id
+    <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">SUM</span>(quantity) <span class="hljs-keyword">DESC</span>
+    <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span>);
+</div></code></pre>
+<p><img src="images/17.png" alt=""></p>
+<h2 id="question-18">Question 18.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> * 
+<span class="hljs-keyword">FROM</span> products 
+<span class="hljs-keyword">WHERE</span> created_at &gt;= <span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">CURDATE</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">10</span> <span class="hljs-keyword">DAY</span>);
+</div></code></pre>
+<p><img src="images/18.png" alt=""></p>
+<h2 id="question-19">Question 19.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> retailer_id
+<span class="hljs-keyword">FROM</span> products 
+<span class="hljs-keyword">WHERE</span> pdt_id <span class="hljs-keyword">in</span> (
+    <span class="hljs-keyword">SELECT</span> pdt_id 
+    <span class="hljs-keyword">FROM</span> order_items
+    <span class="hljs-keyword">WHERE</span> user_id = <span class="hljs-number">1</span>
+);
+</div></code></pre>
+<p><img src="images/19.png" alt=""></p>
+<h2 id="question-20">Question 20.</h2>
+<p><strong>Assumption:</strong>: The prices in the original products tables will remain same. Only the prices in holi_Deals change.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> holi_Deals
+<span class="hljs-keyword">SELECT</span> *
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> created_at &gt;= <span class="hljs-keyword">DATE_SUB</span>(<span class="hljs-keyword">CURDATE</span>(),<span class="hljs-built_in">INTERVAL</span> <span class="hljs-number">100</span> <span class="hljs-keyword">DAY</span>);
+
+<span class="hljs-keyword">UPDATE</span> holi_Deals
+<span class="hljs-keyword">SET</span> price = price * <span class="hljs-number">0.85</span>;
+</div></code></pre>
+<p><img src="images/20.png" alt=""></p>
+<h2 id="question-21">Question 21.</h2>
+<p><strong>About the recommendation algorithm</strong></p>
+<ul>
+<li>Prepare a list of all the products that matches with the past searches of the user. [Descending Order of the time of search]</li>
+<li>Remove all the items for the above list, which the user has already bought after searching.</li>
+<li>Here, I thought that a user have searched for a product and bought one. So I need not recommend the same product that he/she bought again, instead I show the other products to which his/her searchces matches.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> pdt_id, <span class="hljs-keyword">name</span>, price
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> user_id, searches.created_at, pdt_id
+    <span class="hljs-keyword">FROM</span> searches, products
+    <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">name</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-keyword">CONCAT</span>(<span class="hljs-string">'%'</span>, <span class="hljs-keyword">body</span>, <span class="hljs-string">'%'</span>)
+) T <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> products <span class="hljs-keyword">USING</span>(pdt_id)
+<span class="hljs-keyword">WHERE</span> T.user_id = <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> pdt_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> pdt_id
+    <span class="hljs-keyword">FROM</span> order_items
+    <span class="hljs-keyword">WHERE</span> user_id = <span class="hljs-number">1</span>
+)
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pdt_id
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">MAX</span>(T.created_at) <span class="hljs-keyword">DESC</span>
+<span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
+</div></code></pre>
+<p><img src="images/21.png" alt=""></p>
+<p><strong>Explanation: (Dates given in Descending -- User 1)</strong></p>
+<ul>
+<li>Searched &quot;iPad&quot; on 26 Nov 2020.</li>
+<li>Searched &quot;Apple&quot; on 20 Nov 2020.</li>
+<li>Ordered &quot;Lolita&quot; on 10 Nov 2020.</li>
+<li>Searched &quot;Lolita&quot; on 1 November 2020.</li>
+<li>Searched &quot;watch&quot; on 20 Oct 2020.</li>
+<li>Searched &quot;Xiaomi&quot; on 15 Oct 2020.</li>
+<li>Ordered &quot;Dell Inspiron D3&quot; on 15 Oct 2020.</li>
+<li>Searched &quot;Dell&quot; on 20 Sept 2020.</li>
+<li>Searched &quot;Xiaomi&quot; on 12 Aug 2020.</li>
+<li>Ordered &quot;Inferno&quot; on 07 Jan 2010.</li>
+<li>Searched for &quot;Inferno&quot; on 06 Jan 2010.</li>
+<li>Searched for &quot;Vinci Code&quot; on 06 Jan 2010.</li>
+</ul>
+
+</body>
+</html>

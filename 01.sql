@@ -345,3 +345,48 @@ INSERT INTO cart_items(user_id, pdt_id, quantity) VALUES
 
 INSERT INTO cart_items(user_id, pdt_id, quantity) VALUES
     (2, 24, 2);
+
+INSERT INTO searches(user_id, body, created_at) VALUES
+    (2, "mi", '2018-11-13 02:44:00'),
+    (3, "Jeans", '2018-11-15 02:44:00'),
+    (4, "watch", '2018-11-21 02:44:00'),
+    (5, "smart", '2018-10-13 02:44:00'),
+    (6, "Pro", '2018-12-13 02:44:00'),
+    (7, "Realme", '2019-11-13 02:44:00'),
+    (8, "Realme", '2020-11-13 02:44:00'),
+    (9, "Apple", '2019-11-13 02:44:00'),
+    (10, "iPad", '2006-11-13 02:44:00'),
+    (11, "mac", '2005-11-13 02:44:00'),
+    (12, "pple", '2010-11-13 02:44:00'),
+    (13, "sma", '2009-11-13 02:44:00'),
+    (14, "war and", '2008-11-13 02:44:00'),
+    (15, "Lolita", '2011-11-13 02:44:00'),
+    (16, "war", '2012-11-13 02:44:00'),
+    (18, "Demons", '2020-11-13 02:44:00'),
+    (20, "story", '2019-11-13 02:44:00'),
+    (5, "Xiaomi", '2017-11-13 02:44:00'),
+    (6, "Note", '2016-11-13 02:44:00'),
+    (7, "mac", '2015-11-13 02:44:00'),
+    (5, "iPad", '2014-11-13 02:44:00');
+
+INSERT INTO reviews (pdt_id, user_id, username, rating) VALUES
+    (21, 2, 'Anuj Jain', 4),
+    (19, 2, 'Anuj Jain', 1),
+    (18, 3, 'Kavya Agarwal', 2),
+    (17, 5, 'Anmol Gautam', 5),
+    (16, 2, 'Anuj Jain', 1),
+    (15, 2, 'Anuj Jain', 5),
+    (12, 2, 'Anuj Jain', 4),
+    (11, 2, 'Anuj Jain', 3),
+    (10, 5, 'Anmol Gautam', 4),
+    (6, 3, 'Anuj Jain', 4),
+    (5, 6, 'Dhiraj Sinha', 3),
+    (4, 7, 'Kunal Kumar', 4),
+    (3, 8, 'Aditya Puri', 5),
+    (2, 2, 'Anuj Jain', 1),
+    (1, 8, 'Aditya Puri', 4),
+    (9, 5, 'Anmol Gautam', 5),
+    (8, 2, 'Anuj Jain', 5),
+    (7, 8, 'Aditya Puri', 3),
+    (13, 2, 'Anuj Jain', 4),
+    (14, 5, 'Anmol Gautam', 2);
