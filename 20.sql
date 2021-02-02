@@ -1,4 +1,8 @@
+UPDATE products
+SET price = price * 0.85
+WHERE created_at >= DATE_SUB(CURDATE(),INTERVAL 100 DAY);
+
 CREATE TABLE holi_Deals
-SELECT pdt_id, name, category, retailer_id, price * 0.85 as price, created_at
+SELECT *
 FROM products
-WHERE created_at >= DATEADD(DAY, -100, GETDATE());
+WHERE created_at >= DATE_SUB(CURDATE(),INTERVAL 100 DAY);

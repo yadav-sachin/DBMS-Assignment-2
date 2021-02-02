@@ -31,7 +31,6 @@ CREATE TABLE products(
     name VARCHAR(100) NOT NULL,
     category ENUM('novels', 'electronics', 'clothes') NOT NULL,
     retailer_id INT NOT NULL,
-
     price NUMERIC(10,2) NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (pdt_id),
@@ -69,13 +68,13 @@ CREATE TABLE addresses(
 );
 
 CREATE TABLE novels(
-    book_id INT NOT NULL AUTO_INCREMENT,
+    novel_id INT NOT NULL AUTO_INCREMENT,
     pdt_id INT NOT NULL,
     author VARCHAR(100) NOT NULL,
     publisher VARCHAR(100),
     publication_date DATE NOT NULL ,
     description VARCHAR(1000),
-    PRIMARY KEY (book_id),
+    PRIMARY KEY (novel_id),
     FOREIGN KEY (pdt_id) REFERENCES products(pdt_id) ON DELETE CASCADE
 );
 

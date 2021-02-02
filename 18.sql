@@ -1,3 +1,3 @@
 SELECT * 
 FROM products 
-WHERE created_at >= DATEADD(DAY, -10, GETDATE());
+WHERE created_at >= DATE_SUB(CURDATE(),INTERVAL 10 DAY);

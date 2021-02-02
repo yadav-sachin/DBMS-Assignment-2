@@ -68,10 +68,10 @@ INSERT INTO products (name, category, retailer_id, price, created_at) VALUES
     ('Realme R1 Pro', 'electronics', 1, 16000, '2011-11-29 01:47:46'),
     ('Samsung Galaxy S9', 'electronics', 9, 20000, '2010-10-30 01:47:46'),
     ('Leeves Men Jeans', 'clothes', 10, 1600, '2018-10-30 01:47:46'),
-    ('Apple macbook Pro', 'electronics', 9, 90000, '2018-10-30 01:47:46'),
-    ('Apple iPad Pro', 'electronics', 9, 60000, '2018-10-30 01:47:46'),
-    ('Apple iPad Air', 'electronics', 9, 54000, '2019-10-30 01:47:46'),
-    ('Apple iPad', 'electronics', 9, 35000, '2020-10-30 01:47:46');
+    ('Apple macbook Pro', 'electronics', 9, 90000, '2020-12-30 01:47:46'),
+    ('Apple iPad Pro', 'electronics', 9, 60000, '2020-11-30 01:47:46'),
+    ('Apple iPad Air', 'electronics', 9, 54000, '2021-01-30 01:47:46'),
+    ('Apple iPad', 'electronics', 9, 35000, '2021-02-02 01:47:46');
 
 
 INSERT INTO novels (pdt_id, author, publisher, publication_date) VALUES
@@ -133,7 +133,6 @@ INSERT INTO addresses (user_id, street, city, province, pincode) VALUES
 
 INSERT INTO cart_items (user_id, pdt_id, quantity) VALUES
     (1, 4, 3),
-    (2, 24, 1),
     (1, 24, 1),
     (19, 24, 6),
     (3, 6, 1),
@@ -310,3 +309,39 @@ INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VAL
 INSERT INTO orders (user_id, created_at, price, street, city, province , pincode) VALUES (12, '2016-11-13 02:44:00', 8000, '39, Ans Patkar Road, Grant Road', 'Mumbai', 'Maharashtra', 400007);
 INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VALUES 
     (11, 12, 24, 5, 1600);
+
+-- Orders for Last User
+
+-- Order 12
+INSERT INTO orders (user_id, created_at, price, street, city, province , pincode) VALUES (20, '2016-11-13 02:44:00', 33000, 'Gangamma Circle, Jalahalli', 'Bangalore', 'Karnataka', 560013);
+INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VALUES 
+    (12, 20, 16, 3, 33000);
+
+-- Order 13
+INSERT INTO orders (user_id, created_at, price, street, city, province , pincode) VALUES (20, '2017-11-13 02:44:00', 137600, 'Gangamma Circle, Jalahalli', 'Bangalore', 'Karnataka', 560013);
+INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VALUES 
+    (13, 20, 24, 1, 1600),
+    (13, 20, 21, 1, 85000),
+    (13, 20, 28, 1, 35000),
+    (13, 20, 22, 1, 16000);
+
+-- Order 14
+INSERT INTO orders (user_id, created_at, price, street, city, province , pincode) VALUES (20, '2018-11-13 02:44:00', 1205, 'Gangamma Circle, Jalahalli', 'Bangalore', 'Karnataka', 560013);
+INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VALUES 
+    (14, 20, 3, 1, 530),
+    (14, 20, 4, 1, 675);
+
+-- Order 15
+INSERT INTO orders (user_id, created_at, price, street, city, province , pincode) VALUES (20, '2019-11-13 02:44:00', 1177, 'Gangamma Circle, Jalahalli', 'Bangalore', 'Karnataka', 560013);
+INSERT INTO order_items (order_id, user_id, pdt_id, quantity, price_of_each) VALUES 
+    (15, 20, 10, 1, 699),
+    (15, 20, 7, 1, 478);
+
+-- Cart of User 1 and User 2
+INSERT INTO cart_items(user_id, pdt_id, quantity) VALUES
+    (1, 28, 2),
+    (1, 14, 1),
+    (1, 1, 5);
+
+INSERT INTO cart_items(user_id, pdt_id, quantity) VALUES
+    (2, 24, 2);

@@ -1,4 +1,4 @@
-SELECT retailer_id
+SELECT DISTINCT retailer_id
 FROM products 
 WHERE pdt_id in (
     SELECT pdt_id 
