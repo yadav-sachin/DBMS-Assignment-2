@@ -308,8 +308,9 @@ SET price = price * 0.85;
 ## Question 21.
 **About the recommendation algorithm**
 - Prepare a list of all the products that matches with the past searches of the user. [Descending Order of the time of search]
-- Remove all the items for the above list, which the user has already bought after searching.
-- Here, I thought that a user have searched for a product and bought one. So I need not recommend the same product that he/she bought again, instead I show the other products to which his/her searchces matches.
+- Remove all the items from the above list, which the user has already bought after searching.
+- Hence we are left with the products that are **similar to the previous searches/purchases but are not exactly the same product**.
+- Here, I thought that a user have searched for a product and bought one. So I need not recommend the same product that he/she bought again, instead I show the other similar products to which his/her searchces matches.
 
 ```sql
 SELECT pdt_id, name, price

@@ -603,8 +603,9 @@ In reviews relation, the user_id Foreign Key is allowed to be NULL.</p>
 <p><strong>About the recommendation algorithm</strong></p>
 <ul>
 <li>Prepare a list of all the products that matches with the past searches of the user. [Descending Order of the time of search]</li>
-<li>Remove all the items for the above list, which the user has already bought after searching.</li>
-<li>Here, I thought that a user have searched for a product and bought one. So I need not recommend the same product that he/she bought again, instead I show the other products to which his/her searchces matches.</li>
+<li>Remove all the items from the above list, which the user has already bought after searching.</li>
+<li>Hence we are left with the products that are <strong>similar to the previous searches/purchases but are not exactly the same product</strong>.</li>
+<li>Here, I thought that a user have searched for a product and bought one. So I need not recommend the same product that he/she bought again, instead I show the other similar products to which his/her searchces matches.</li>
 </ul>
 <pre class="hljs"><code><div><span class="hljs-keyword">SELECT</span> pdt_id, <span class="hljs-keyword">name</span>, price
 <span class="hljs-keyword">FROM</span> (
